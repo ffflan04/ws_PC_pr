@@ -1,0 +1,175 @@
+* { /* セミコロンで全要素を対象にする　*/
+    /* このwebサイトに、margin や、paddingなどの余白をゼロにするという設定を適応してるのかな。*/
+    /* この設定は、よくわからないけど、テンプレでいいんじゃない？*/
+    margin: 0; /* 外側の余白をゼロにします　*/
+    padding: 0; /* 内側の余白もゼロにします　*/
+    box-sizing: border-box; /* padding内に、width, heightを収める */
+}
+
+.main { /* 実際のメインディスプレイの設定かな？ */
+    font-family: 'Ubuntu', sans-serif; /* google fonts(API？)からとってきたもので、めっちゃおしゃれな字体になるよ。*/
+    font-size: 1.2rem; /* rem は、px より使い勝手がいいらしい。*/
+    width: 100vw; /* どんなウィンドウサイズの時でも、横幅いっぱいに指定したい時に、100vwを使うんですね。*/
+    height: 100vh; /* どんなウィンドウサイズの時でも、縦幅いっぱいに指定したい時に、100vwを使うんですね。*/
+    background: linear-gradient(to right, #8a417a, #b03838); /* 背景色を指定します。liner-gradientはグラデーションを出すことができます */
+    overflow: hidden; /* 要素のボックスからはみでた部分を、'hidden' -> 隠します。*/
+}
+
+nav { /* flexboxの設定ではないので、孫要素以降にも、cssの設定は届きます。*/
+    display: flex; /* display: flex; の宣言で、子要素を、’左寄せの横並び’にします。*/
+    width: 80%; /* width: 80%;は直下のブロック要素に、margin的余白を発生させ。子要素以降にも適用される。*/
+    margin: 20px auto; /* margin: 左右auto -> 仮に、左右のmarginの比率がずれていた際に、均等にmarginを配備してくれます。*/
+    /* 注意：margin を当てられるのは、divタグのような、ブロック要素のみです？*/
+    /* まぁ大半が、ブロック要素なんで大丈夫です。*/
+    align-items: center; /* align-items: center; -> flexアイテムを上下中央で揃えます。*/
+    font-weight: 550; /* 文字の太さを設定します。*/
+}
+
+.nav-links {
+    flex: 1; /* flex-grow: 1;と同じ。つまり、余白を全てこのflexアイテムに付与します。*/
+    text-align: right; /* flex: 1; で余白を要素に結合して、text-align で一番端に寄せる方法もある。*/
+}
+
+.nav-links li { /* nav-linksクラスの、子要素、<li>タグを指定して、cssを当てる。*/
+    list-style: none; /* リストマーカーをけします。*/
+}
+
+.logo-area {
+    display: flex; /* 直下の要素が持つ、子要素を、flexアイテムとして管理します。*/
+    align-items: center; /* align-items はflexアイテムの上下の配置を揃えることができるプロパティです。 */
+    z-index: 1;
+}
+
+.logo { /* flexアイテム管理下 */
+    width: 20%; /* サイズの指定はとりあえず、%を使ってればいいんじゃない？*/
+    height: 20%;
+    margin-right: 12px; /* 隣接してるflexアイテムと、間をあけます。*/
+}
+
+.nav-links ul li { /* ナビゲーション項目、全体のcss */
+    display: inline-block; /* 縦に並ぶブロック要素を、並列にする方法の一つ、display: inline-block ですね。*/
+}
+
+.nav-links ul a { /* ナビゲーション項目の、一つ一つのcss */
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none; /* <a>タグ特有のアンダーバーを消します */
+    transition: 1s; /* ホバー処理の推移にかかる時間を設定。うーん。細かい笑　*/ 
+}
+
+.nav-links ul a:hover { /* 任意の<a>タグに、:hoverを加えたcssを記述するだけで、ホバー時の処理を実装できる。*/
+    color: #7eb15b;
+}
+
+/* information section の、css */
+
+.information { /* div要素です。画面左半分のメインコンテンツを記載する部分 */
+    /* レスポンシブを意識するなら、%で必ず対応しようぜ。*/
+    width: 100%; /* レスポンシブに横幅を決定するために、%を使いました */
+    height: 100%; /* どっちも100%ってことは、まぁ、画面全体ってことやね。*/
+    position: absolute; /* 親要素を基準にした、絶対的な位置を指定 */
+    top: 50%; /* position absoluteの絶対位置を、上から50%の位置に指定。 */
+    right: 50%; /* position absoluteの絶対位置を、右から50%先の位置に指定 */
+    transform: translateY(-50%); /* y軸の要素、50%の長さ分、上に移動させます。 */
+}
+
+#circle {
+    position: absolute; /* 親要素に重ねたいので、position: absoluteを指定しますね。*/
+    width: 1000px; /* 100% で、初期値から移動させてないので、完全に、親要素と位置も大きさも重なります。*/
+    height: 1000px;
+    /*background: #ccc; 円形の部分を表示してくれるよ。*/
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(0%) rotate(0deg); /* javascript で値を変更するため、初期化する。*/
+    transition: 1s;
+    right: 8vw;
+}
+
+.feature { /* cssの共通の処理をこちらでまとめてる */
+    display: flex; /* flexで横並びにして */
+    position: absolute;
+    color: #fff;
+}
+
+.feature img { /* featureタグ内の、imgタグ、つまり、画像の大きさを、画面の大きさで統一します。*/
+    width: 5vw;
+    height: 5vh;
+    margin-top: 10%;
+}
+
+.feature div { /* flexアイテム同士(img と、テキスト)に、少し間を空けてるね */
+    margin-left: 5%;
+    font-size: 2vw; /* 画面の大きさに合わせて、文字の大きさを変更します。*/
+}
+
+.one { /* 回転式のロゴ、一番目 */
+    top: 50%; /* 位置を調整します。(position absoluteが適応されてるので) */
+    transform: translateY(-50%);
+    right: 1%;
+}
+
+.two {
+    left: 50%;
+    transform: translateX(-50%) rotate(-90deg);
+    top: 5%;
+}
+
+.three {
+    left: 50%;
+    transform: translateX(-50%) rotate(-270deg);
+    bottom: 5%;
+}
+
+.four {
+    top: 50%; /* 位置を調整します。(position absoluteが適応されてるので) */
+    transform: translateY(-50%) rotate(-180deg);
+    left: 0%;
+}
+
+.pc {
+    width: 20vw;
+    position: absolute;
+    top: 50%; /* 親要素の高さの比率で、50%の長さ、上から、離した位置にする */
+    left: 50%; /* translateとpositionを使うことで、大きさが変化しても、中心に位置させることができる。*/
+    transform: translateY(-50%);
+    z-index: 1; /* z-indexの値が大きければ、上にいきます。*/
+}
+
+/* control section の、css */
+
+.control { /* 画面右側の、スクロールできるボタンがあるところ */
+    position: absolute; /* あぁ、この記述は、DOM要素を重ね合わせることができるのか。*/
+    top: 50%; /* <img>, <h3> などの位置をまとめて指定。*/
+    transform: translateY(-50%);
+    right: 20%;
+    text-align: center; /* <h3>のテキストを真ん中に寄せたかった */
+}
+
+.control h3 {
+    color: #fff;
+    margin: 20px 0;
+}
+
+.control img {
+    width: 5vw;
+}
+
+#upBtn {
+    cursor: pointer;
+}
+
+#downBtn {
+    cursor: pointer; /* マウスオーバーすると、カーソルの形状を変える処理 */
+    transform: rotate(-180deg); /* transform rotate -> 要素を回転させます。*/
+}
+
+.overlay {
+    width: 0; /* こちらは、横幅、高さが必要ありません */
+    height: 0;
+    border-top: 400px solid #fff;
+    border-bottom: 400px solid #fff;
+    border-right: 400px solid transparent;
+    border-left: 400px solid #fff;
+    position: absolute;
+    right: 5%;
+}

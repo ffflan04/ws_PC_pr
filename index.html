@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript-website-tutorial</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@1,300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="main"><!--cssで文字サイズ、縦幅、横幅を指定したmainクラスのdivタグの中に、DOM要素を記述します。-->
+        <nav><!--navセクションには、横並びが望ましので、cssでdisplay flexを当ててます。-->
+            <div class="logo-area"><!--左上のナビゲーションと並列のロゴの写真を配置する部分ですね。-->
+                <img src="./images/logo.png" alt="ロゴ" class="logo">
+                <h2>Electoric PC Desigin</h2><!--タイトルの名前ですね。-->
+            </div>
+
+            <div class="nav-links"><!--サイトの右上によく設置されてる目次のようなリンクですね。-->
+                <ul><!--<li>タグで囲うことで、ulタグの管理下に置く。-->
+                    <li><a href="">Home</a></li>
+                    <li><a href="">Detail</a></li>
+                    <li><a href="">Shop</a></li>
+                    <li><a href="">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!--information section-->
+        <div class="information"><!--画面の左側の部分ですね。-->
+            <div class="overlay"></div><!--cssで図形を書いて遊ぶので、cssの中身は空でいい。-->
+            <img src="./images/pc.png" class="pc"><!--absoluteするpositionを、回ってしまうcircleクラスから抜けたかった-->
+            <div id="circle" class="sub"><!--Javascriptで回転する歯車を実装する部分ですね。-->
+                <div class="feature one"><!--これは複数のクラスを指定してます。feature と、oneクラスですね。-->
+                    <!--クラスを２つ定義しているのは、cssで共通の記述を短縮するためです。-->
+                    <img src="./images/camera.png" alt="">
+                    <div>
+                        <h1>camera</h1>
+                        <p>Beautiful lens.</p>
+                    </div>
+                </div>
+                <div class="feature two">
+                    <img src="./images/processor.png" alt="">
+                    <div>
+                        <h1>Processor</h1>
+                        <p>Processor is very important.</p>
+                    </div>
+                </div>
+                <div class="feature three">
+                    <img src="./images/battery.png" alt="">
+                    <div>
+                        <h1>Battery</h1>
+                        <p>Battery is powerful.</p>
+                    </div>
+                </div>
+                <div class="feature four">
+                    <img src="./images/display.png" alt="">
+                    <div>
+                        <h1>Display</h1>
+                        <p>Beautiful display.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- control section -->
+        <div class="control">
+            <img src="./images/arrow.png" id="upBtn">
+            <h3>Feature</h3>
+            <img src="./images/arrow.png" id="downBtn">
+        </div>
+    </div>
+
+    <script src="./app.js"></script>
+</body>
+</html>
